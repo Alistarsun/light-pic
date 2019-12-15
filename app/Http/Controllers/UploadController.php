@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UploadRequest;
 use App\Image;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,7 @@ class UploadController extends Controller
      * @param Request $request
      * @return View
      */
-    public function saveImage(Request $request)
+    public function saveImage(UploadRequest $request)
     {
         $file = $request->file('upload-image');
 
