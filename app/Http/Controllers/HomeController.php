@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Storage;
 
 class HomeController extends Controller
 {
@@ -21,8 +22,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+        $path = $request->input('path', '');
+        $lastPath = mb_substr($path, 0, mb_strrpos($path, '/'));
+
+        $directories = Storage::directories($path);
+        $files = Storage::files($path);
+
+        return view('home', compact('path', 'lastPath', 'directories', 'files'));
     }
 }
