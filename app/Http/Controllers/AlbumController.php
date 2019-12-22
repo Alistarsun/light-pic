@@ -19,6 +19,13 @@ class AlbumController extends Controller
         return view('album', compact('albums'));
     }
 
+    public function show(Album $album)
+    {
+        $album->load('images');
+
+        return view('album.show', compact('album'));
+    }
+
     /**
      * 保存新的相册
      *

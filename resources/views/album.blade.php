@@ -32,7 +32,7 @@
                             </td>
                             <td>{{ $album->updated_at->diffForHumans() }}</td>
                             <td>
-                                <a href="#">查看</a>
+                                <a href="{{ route('albums.show', $album) }}">查看</a>
                             </td>
                         </tr>
                         @endforeach

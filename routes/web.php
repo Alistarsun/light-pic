@@ -17,6 +17,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 # 相册
 Route::get('/albums', 'AlbumController@index')->name('albums.index');
+Route::get('/albums/{album}', 'AlbumController@show')->middleware('auth')->name('albums.show');
 Route::post('/albums', 'AlbumController@store')->middleware('auth')->name('albums.store');
 
 # 相片
