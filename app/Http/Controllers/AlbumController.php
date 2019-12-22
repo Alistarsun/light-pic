@@ -14,9 +14,9 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        $albums = Album::withCount('images')->get();
+        $albums = Album::withCount('images')->paginate(12);
 
-        return view('album', compact('albums'));
+        return view('album.index', compact('albums'));
     }
 
     public function show(Album $album)
