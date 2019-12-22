@@ -8,6 +8,18 @@ use App\Http\Requests\AlbumRequest;
 class AlbumController extends Controller
 {
     /**
+     * 相册页
+     *
+     * @return View
+     */
+    public function index()
+    {
+        $albums = Album::all();
+
+        return view('album', compact('albums'));
+    }
+
+    /**
      * 保存新的相册
      *
      * @param AlbumRequest $request

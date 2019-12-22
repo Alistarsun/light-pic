@@ -13,6 +13,8 @@ try {
     require('bootstrap');
     require('bs-custom-file-input');
     require('sweetalert');
+    require('bootstrap-select');
+
 } catch (e) {}
 
 /**

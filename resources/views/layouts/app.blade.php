@@ -39,10 +39,10 @@
                             <a class="nav-link" href="{{ route('home') }}">首页</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('albums') }}">相册</a>
+                            <a class="nav-link" href="{{ route('albums.index') }}">相册</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('upload-page') }}">上传</a>
+                            <a class="nav-link" href="{{ route('images.create') }}">上传</a>
                         </li>
 
                         @endauth

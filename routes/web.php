@@ -14,9 +14,11 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/albums', 'HomeController@album')->name('albums');
 
-Route::get('/upload', 'UploadController@uploadPage')->middleware('auth')->name('upload-page');
-Route::post('/upload', 'UploadController@saveImage')->middleware('auth')->name('save-image');
-
+# 相册
+Route::get('/albums', 'AlbumController@index')->name('albums.index');
 Route::post('/albums', 'AlbumController@store')->middleware('auth')->name('albums.store');
+
+# 相片
+Route::get('/images/create', 'ImageController@create')->middleware('auth')->name('images.create');
+Route::post('/images', 'ImageController@store')->middleware('auth')->name('images.store');
