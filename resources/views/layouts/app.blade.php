@@ -10,8 +10,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -37,8 +36,15 @@
                     <ul class="navbar-nav mr-auto">
                         @auth
                         <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('home') }}">首页</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('albums') }}">相册</a>
+                        </li>
+                        <li class="nav-item active">
                             <a class="nav-link" href="{{ route('upload-page') }}">上传</a>
                         </li>
+
                         @endauth
                     </ul>
 
@@ -81,6 +87,10 @@
             @yield('content')
         </main>
     </div>
+
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}"></script>
+    @yield('scriptsAfterJs')
 </body>
 
 </html>

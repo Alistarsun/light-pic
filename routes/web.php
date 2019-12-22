@@ -14,6 +14,9 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/albums', 'HomeController@album')->name('albums');
 
 Route::get('/upload', 'UploadController@uploadPage')->middleware('auth')->name('upload-page');
 Route::post('/upload', 'UploadController@saveImage')->middleware('auth')->name('save-image');
+
+Route::post('/albums', 'AlbumController@store')->middleware('auth')->name('albums.store');

@@ -11,7 +11,8 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
-    require('bs-custom-file-input')
+    require('bs-custom-file-input');
+    require('sweetalert');
 } catch (e) {}
 
 /**
