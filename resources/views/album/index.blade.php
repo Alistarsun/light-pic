@@ -32,7 +32,12 @@
                             </td>
                             <td>{{ $album->updated_at->diffForHumans() }}</td>
                             <td>
-                                <a href="{{ route('albums.show', $album) }}">查看</a>
+                                <a class="mr-1" href="{{ route('albums.show', $album) }}">
+                                    <i class="fa fa-eye fa-fw"></i>
+                                </a>
+                                <a class="album-edit-btn" href="javascript:;" data-name="{{ $album->name }}" data-id="{{ $album->id }}">
+                                    <i class="fa fa-edit fa-fw"></i>
+                                </a>
                             </td>
                         </tr>
                         @endforeach
@@ -65,6 +70,47 @@
                         .then(function(result) {
                             if (result.status == 200) {
                                 swal("添加成功！", result.data.message, "success").then(() => {
+                                    location.reload()
+                                });
+                            }
+                        })
+                        .catch(function(err) {
+                            if (err.request && err.response.status == 422) {
+                                let errors = err.response.data.errors
+                                swal("参数错误！", errors[Object.keys(errors)[0]][0], "error");
+                            } else {
+                                swal("系统错误！", "请刷新浏览器后重试", "error");
+                            }
+                        });
+                }
+            });
+        });
+
+        $(".album-edit-btn").click((event) => {
+            let name = event.currentTarget.dataset.name
+            let albumId = event.currentTarget.dataset.id
+
+            swal({
+                title: "请输入相册新名称：",
+                content: {
+                    element: "input",
+                    attributes: {
+                        placeholder: name,
+                        value: name,
+                    },
+                },
+                buttons: ['取消', '保存'],
+
+            }).then((input) => {
+                console.log(input)
+                if (input) {
+                    axios.post(`/albums/${albumId}`, {
+                            _method: "PUT",
+                            name: input,
+                        })
+                        .then(function(result) {
+                            if (result.status == 200) {
+                                swal("编辑成功！", result.data.message, "success").then(() => {
                                     location.reload()
                                 });
                             }
