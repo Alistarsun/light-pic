@@ -15,7 +15,8 @@
                     <thead>
                         <tr>
                             <th scope="col">名称</th>
-                            <th width="20%" scope="col">创建时间</th>
+                            <th scope="col">数量</th>
+                            <th width="20%" scope="col">更新时间</th>
                             <th width="20%" scope="col">操作</th>
                         </tr>
                     </thead>
@@ -26,7 +27,10 @@
                                 <i class="fa fa-folder fa-fw"></i>
                                 {{ $album->name }}
                             </td>
-                            <td>{{ $album->created_at->toDateString() }}</td>
+                            <td>
+                                {{ $album->images_count }}
+                            </td>
+                            <td>{{ $album->updated_at->diffForHumans() }}</td>
                             <td>
                                 <a href="#">查看</a>
                             </td>
