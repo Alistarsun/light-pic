@@ -17,7 +17,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($album->images as $image)
+                        @foreach($images as $image)
                         <tr>
                             <td>
                                 <i class="fa fa-image fa-fw"></i>
@@ -34,6 +34,9 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                <hr>
+                {{ $images->links() }}
             </div>
         </div>
     </div>

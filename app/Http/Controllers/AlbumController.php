@@ -27,9 +27,9 @@ class AlbumController extends Controller
      */
     public function show(Album $album)
     {
-        $album->load('images');
+        $images = $album->images()->paginate(24);
 
-        return view('album.show', compact('album'));
+        return view('album.show', compact('album', 'images'));
     }
 
     /**
